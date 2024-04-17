@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { StyledNav } from '../../styles/navStyled/navStyled';
 
 export const Nav = () => {
   return (
-    <nav>
+    <StyledNav>
       <ul>
         <li key="home" className="heartbeat">
           <Link to="/"> 🏠 HOME</Link>
@@ -12,6 +13,6 @@ export const Nav = () => {
           <Link to="/shop"> SHOP</Link>
         </li>
       </ul>
-    </nav>
+    </StyledNav>
   );
 };

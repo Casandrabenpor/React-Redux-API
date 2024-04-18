@@ -7,7 +7,7 @@ export const StyledNav = styled.nav`
   align-items: center;
   justify-content: space-around;
   padding: 1em;
-  background-color: white;
+  background-color: #b13939;
   ul {
     display: flex;
     flex-direction: row;

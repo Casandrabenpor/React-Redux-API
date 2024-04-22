@@ -12,6 +12,9 @@ export const Nav = () => {
         <li key="shop" className="heartbeat">
           <Link to="/shop"> SHOP</Link>
         </li>
+        <li key="create" className="heartbeat">
+          <Link to="/create">Create</Link>
+        </li>
       </ul>
     </StyledNav>
   );

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useTypedDispatch, useTypedSelector } from '../../app/store';
 import Phone from '../../models/interface';
-import { loadPhones } from '../../features/cardApiThunks/cardApiThunks';
+import {
+  deletePhone,
+  loadPhones,
+} from '../../features/cardApiThunks/cardApiThunks';
 import { ToastContainer } from 'react-toastify';
 import {
   Card,
@@ -37,6 +40,12 @@ export const CardPhotos = () => {
     }
   }, [phoneStatus, dispatch]);
 
+  //Delete phone
+  const handleDeletePhone = (phoneId: number | undefined) => {
+    // event.preventDefault();
+    dispatch(deletePhone(phoneId));
+  };
+
   return (
     <div>
       <ToastContainer theme="colored" />
@@ -51,6 +60,7 @@ export const CardPhotos = () => {
             <TitleGallery>{phone.name}</TitleGallery>
             <TextGallery>{phone.description}</TextGallery>
             <TextPrice>{phone.price}</TextPrice>
+            <h2 onClick={() => handleDeletePhone(phone.id)}>🗑 </h2>
           </Card>
         ))}
       </Gallery>

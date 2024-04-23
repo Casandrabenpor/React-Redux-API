@@ -48,7 +48,6 @@ export const CardPhotos = () => {
 
   return (
     <div>
-      <ToastContainer theme="colored" />
       <Subtitle>CARDS</Subtitle>
       {/* {isLoading && <CircleLoader color="rgb(243, 100, 18)" size={1000} />} */}
       <Gallery>
@@ -58,7 +57,12 @@ export const CardPhotos = () => {
               <img src={phone.photoUrl} alt={phone.name} />
             </Link>
             <TitleGallery>{phone.name}</TitleGallery>
-            <TextGallery>{phone.description}</TextGallery>
+            <TextGallery>
+              {' '}
+              <div
+                dangerouslySetInnerHTML={{ __html: phone.description }}
+              ></div>
+            </TextGallery>
             <TextPrice>{phone.price}</TextPrice>
             <h2 onClick={() => handleDeletePhone(phone.id)}>🗑 </h2>
           </Card>

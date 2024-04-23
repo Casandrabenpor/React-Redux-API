@@ -3,7 +3,7 @@ import Phone from '../../models/interface';
 
 export const loadPhones = createAsyncThunk('phones/getPhones', async () => {
   const data = await fetch(
-    'https://phones-store-api.containers.soamee.com/phones',
+    'https://api.spoonacular.com/recipes/random?apiKey=ae8a0017535f4c17977fc8a0d24ca76c&number=20',
   ).catch((error) => {
     throw error;
   });
@@ -12,13 +12,16 @@ export const loadPhones = createAsyncThunk('phones/getPhones', async () => {
     throw new Error('API request failed');
   });
 
-  let photos = json.map((phone: any) => {
+  let photos = json.recipes.map((recipe: any) => {
+    // const imageUrl =
+    //   // recipe.extendedIngredients.length > 0
+    //   //   ? recipe.extendedIngredients[0].image
+    //   //   : '';
     return {
-      photoUrl: phone.photoUrl,
-      id: phone.id,
-      name: phone.name,
-      description: phone.description,
-      price: phone.price,
+      photoUrl: recipe.image,
+      id: recipe.id,
+      name: recipe.title,
+      description: recipe.summary,
     } as Phone;
   });
 

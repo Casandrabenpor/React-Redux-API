@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Phone from '../../models/interface';
-
+const apiKey = process.env.REACT_APP_API_KEY;
 export const loadPhones = createAsyncThunk('phones/getPhones', async () => {
   const data = await fetch(
-    'https://api.spoonacular.com/recipes/random?apiKey=ae8a0017535f4c17977fc8a0d24ca76c&number=20',
+    `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=20`,
   ).catch((error) => {
     throw error;
   });
@@ -13,10 +13,6 @@ export const loadPhones = createAsyncThunk('phones/getPhones', async () => {
   });
 
   let photos = json.recipes.map((recipe: any) => {
-    // const imageUrl =
-    //   // recipe.extendedIngredients.length > 0
-    //   //   ? recipe.extendedIngredients[0].image
-    //   //   : '';
     return {
       photoUrl: recipe.image,
       id: recipe.id,
